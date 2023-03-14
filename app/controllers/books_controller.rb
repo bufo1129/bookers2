@@ -20,6 +20,7 @@ class BooksController < ApplicationController
   end
 
   def edit
+
   end
 
   def destroy
@@ -31,7 +32,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :opinion)
+    params.require(:book).permit(:name, :title, :body)
   end
 
 end

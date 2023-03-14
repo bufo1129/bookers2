@@ -1,11 +1,35 @@
 <div>
-  <%= image_tag @book.get_image %>
-  <p>ユーザー名：<%= @book.user.name %></p>
-  <%= link_to book_path(@book.id) do %>
-  <p>title：<%= @book.title %></p>
-  <% end %>
-  <p>opinion：<%= @book.body %></p>
-  <% if @book.user == current_user %>
-    <%= link_to "Destroy", books_path(@book), method: :delete %>
-  <% end %>
+  <h2>Book detail</h2>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>
+            <%= link_to book_path(@book.id) do %>
+            <p>プロフ画像<%= image_tag @book.user.get_profile_image(100,100) %></p>
+            <p>ユーザー名：<%= @book.user.name %></p>
+            <% end %>
+          </td>
+          <td>
+            <p>title：<%= @book.title %></p>
+          </td>
+          <td>
+            <p>opinion：<%= @book.body %></p>
+          </td>
+          <td>
+            <!-- Editにリンク飛ばしたい：link_to "edit", edit_user_path(@book) -->
+          </td>
+          <td>
+            <% if @book.user == current_user %>
+            <%= link_to "Destroy", books_path(@book), method: :delete %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
 </div>
