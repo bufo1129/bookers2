@@ -4,7 +4,25 @@
   <div class="row">
     <div class="col-md-3">
       <h2>User info</h2>
-      プロフィールひょうじ：テーブルタグつかう（投稿ユーザーと関連付ける）
+
+<% @books.each do |book| %>
+
+<%= image_tag book.get_image %>
+<%= book.user.name %>
+
+<% end %>
+
+
+<table class="table">
+  <tbody>
+    <tr></tr>
+    <tr></tr>
+    <tr></tr>
+  </tbody>
+</table>
+
+
+
       <div class="row">
         <%= link_to users_path, class: "btn btn-outline-secondary btn-block" do %>
         <i class="fas fa-user-cog"></i>
@@ -93,7 +111,7 @@
       </table>
 
 
-
+<!--ログインユーザー版とそうじゃないつくる-->
 
 
  <% if user_signed_in? %>
