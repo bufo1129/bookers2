@@ -1,4 +1,6 @@
-<div>
+
+
+
   <h2>Book detail</h2>
     <table class="table">
       <tbody>
@@ -16,9 +18,13 @@
             <p>opinion：<%= @book.body %></p>
           </td>
           <td>
-            <!-- Editにリンク飛ばしたい：link_to "edit", edit_user_path(@book) -->
+            <!-- booksのeditにshowにリンク飛ばしたい： -->
+            <% if @book.user == current_user %>
+            <%= link_to "edit", edit_user_path(@book) %>
+            <% end %>
           </td>
           <td>
+            <!-- booksにリンク飛ばしたい： -->
             <% if @book.user == current_user %>
             <%= link_to "Destroy", books_path(@book), method: :delete %>
             <% end %>
@@ -26,10 +32,3 @@
         </tr>
       </tbody>
     </table>
-
-
-
-
-
-
-</div>
