@@ -1,34 +1,42 @@
+<p id="notice"></p>
 
+<div class="container">
+  <div class="row">
 
+    <div class="col-md-3"></div>
 
-  <h2>Book detail</h2>
-    <table class="table">
-      <tbody>
-        <tr>
-          <td>
-            <%= link_to book_path(@book.id) do %>
-            <p>プロフ画像<%= image_tag @book.user.get_profile_image(100,100) %></p>
-            <p>ユーザー名：<%= @book.user.name %></p>
-            <% end %>
-          </td>
-          <td>
-            <p>title：<%= @book.title %></p>
-          </td>
-          <td>
-            <p>opinion：<%= @book.body %></p>
-          </td>
-          <td>
-            <!-- booksのeditにshowにリンク飛ばしたい： -->
-            <% if @book.user == current_user %>
-            <%= link_to "edit", edit_user_path(@book) %>
-            <% end %>
-          </td>
-          <td>
-            <!-- booksにリンク飛ばしたい： -->
-            <% if @book.user == current_user %>
-            <%= link_to "Destroy", books_path(@book), method: :delete %>
-            <% end %>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to user_path(@book.id) do %>
+              <%= image_tag @book.user.get_profile_image(100,100) %><br>
+              <%= @book.user.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to book_path(@book.id) do %>
+              <%= @book.title %>
+              <% end %>
+            </td>
+            <td>
+              <%= @book.body %>
+            </td>
+            <td>
+              <% if @book.user == current_user %>
+              <%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-success" %>
+              <% end %>
+            </td>
+            <td>
+              <% if @book.user == current_user %>
+              <%= link_to "Destroy", books_path(@book), method: :delete,"data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
