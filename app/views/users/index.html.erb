@@ -1,29 +1,76 @@
+<p id="notice"></p>
 
-<h2>Users</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>image</th>
-      <th>name</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-    <tr>
-      <td>
-        <%= link_to user_path(user.id) do %>
-        <p><%= image_tag user.get_profile_image(100,100) %></p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <h2>User info</h2>
+      プロフィールひょうじ：テーブルタグつかう(投稿ユーザーと関連)
+      <div class="row">
+        <%= link_to users_path, class: "btn btn-outline-secondary btn-block" do %>
+        <i class="fas fa-user-cog"></i>
         <% end %>
-      </td>
-      <td>
-        <p><%= user.name %></p>
-      </td>
-      <td>
-        <p><%= link_to "Show", user_path(user.id) %></p>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+      </div>
+      <h1>New Book</h1>
+      <%= form_with model: @book do |f| %>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form-control book_title", id: "book_title" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :opinion %>
+        <%= f.text_area :body, class: "form-control book_body", id: "book_body" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit 'Create Book', class: "btn btn-success" %>
+      </div>
+      <% end %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Users</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>name</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td>
+              <%= link_to user_path(user.id) do %>
+              <%= image_tag user.get_profile_image(100,100) %>
+              <% end %>
+            </td>
+            <td>
+              <%= user.name %>
+            </td>
+            <td>
+              <%= link_to "Show", user_path(user.id) %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+        <% @users.each do |user| %>
+          <tr>
+            <td>
+              <%= link_to user_path(user.id) do %>
+              <%= image_tag user.get_profile_image(100,100) %>
+              <% end %>
+              <%= user.name %>
+            </td>
+            <td>
+              <%= link_to "Edit", user_path(user.id) %>
+            </td>
+            <td>
+              <%= link_to "Show", user_path(user.id) %>
+            </td>
+          </tr>
+        <% end %>
