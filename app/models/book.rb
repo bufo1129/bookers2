@@ -10,5 +10,10 @@ class Book < ApplicationRecord
   #   end
   #   image
   # end
+  
+  validates :title, presence: true
+  validates :body, presence: true
+  validates :image, presence: true
+  validates :user_id, presence: true
 
 end

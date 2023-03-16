@@ -1,5 +1,15 @@
 class UsersController < ApplicationController
 
+
+  def create
+    @user = User.new(book_params)
+
+    @book.save
+    redirect_to books_path
+    # もともとあったほう
+  end
+  # create追加・新規投稿できない
+
   def show
     @user = User.find(params[:id])
     @books = @user.books
