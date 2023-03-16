@@ -2,17 +2,14 @@ class UsersController < ApplicationController
 
 
   def create
-    @user = User.new(book_params)
 
-    @book.save
-    redirect_to books_path
-    # もともとあったほう
   end
   # create追加・新規投稿できない
 
   def show
     @user = User.find(params[:id])
     @books = @user.books
+    @book = Book.new
   end
 
   def edit
@@ -21,6 +18,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @book = Book.new
   end
 
   def update
@@ -32,7 +30,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image)
+    params.require(:user).permit(:name, :profile_image, :introduction)
   end
 
 end

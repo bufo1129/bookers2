@@ -4,9 +4,11 @@
   <div class="row">
     <div class="col-md-3">
 
-      <!--部分テンプレ切り取り↓-->
+    <!--部分テンプレ切り取り↓-->
 
-<%= render 'info', books: @books %>
+ <%= render 'info', user: @books, book: @book_new %>
+ <!--booksモデルは投稿内容のid取得するため,
+ controllerの@booksのuser指定したインスタンス変数の引き渡しが必要-->
 
     <!--部分テンプレ切り取り↑-->
 
@@ -36,7 +38,7 @@
             </td>
             <td>
               <% if @book.user == current_user %>
-              <%= link_to "Destroy", books_path(@book), method: :delete,"data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
+              <%= link_to "Destroy", book_path(@book), method: :delete,"data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
               <% end %>
             </td>
           </tr>
