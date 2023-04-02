@@ -8,6 +8,7 @@ class RelationshipsController < ApplicationController
   def destroy
     current_user.unfollow(params[:user_id])
     redirect_to request.referer
+  end
 
   def followings
     user = User.find(params[:user_id])
@@ -20,5 +21,3 @@ class RelationshipsController < ApplicationController
   end
 
 end
-end
-# ↑SyntaxError：unexpected end-of-input, expecting `end' の解消、なんのend・・・？
