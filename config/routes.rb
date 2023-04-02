@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   resources :books, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
     resource :favorites, only: [:create, :destroy]
   end
-  resources :users, only: [:create, :show, :edit, :index, :update]
+  resources :users, only: [:create, :show, :edit, :index, :update] do
+    resource :relationships, only: [:create, :destroy]
+    get 'relationships/followings'
+    get 'relationships/followers'
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
